@@ -3,12 +3,17 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\lib\Db;
 
 class MainController extends Controller
 {
     public function indexAction()
     {
-        echo __METHOD__;
+        $result = $this->model->getNews();
+        $vars = [
+            'news' => $result,
+        ];
+        $this->view->render('News', $vars);
     }
 
     public function contactAction()
